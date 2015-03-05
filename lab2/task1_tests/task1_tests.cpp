@@ -6,6 +6,11 @@
 
 using namespace std;
 
+bool VectorsAreEqual(vector<double> const& x, vector<double> const& y)
+{
+	return x == y;
+}
+
 BOOST_AUTO_TEST_CASE(EmptyVectorProducesEmptyVector)
 {
 	vector<double> emptyVector;
@@ -21,8 +26,9 @@ BOOST_AUTO_TEST_CASE(VectorWithoutDosntChangeContent)
 	BOOST_CHECK(numbers == copy);
 }
 
-BOOST_AUTO_TEST_CASE(VectorIsOnePositiveElement)
+BOOST_AUTO_TEST_CASE(VectorWithOnePositiveElement)
 {
 	vector<double> numbers = { -1, 3 };
-	ProcessVector;
+	ProcessVector(numbers);
+	BOOST_CHECK(VectorsAreEqual(numbers, { 2, 6 }));
 }
