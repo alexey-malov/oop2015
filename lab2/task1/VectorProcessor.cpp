@@ -1,20 +1,14 @@
 #include "stdafx.h"
 #include "VectorProcessor.h"
+#include <algorithm>
+
+using namespace std;
 
 void ProcessVector(std::vector<double> & numbers)
 {
-	//numbers;
-
-	double foundPositiveNumber = 0;
-
-	for (auto number : numbers)
-	{
-		if (number > 0)
-		{
-			foundPositiveNumber = number;
-			break;
-		}
-	}
+	auto IsPositive = [](double number){return number > 0; };
+	auto it = find_if(numbers.begin(), numbers.end(), IsPositive);
+	double foundPositiveNumber = it != numbers.end() ? *it : 0;
 
 	for (auto &number : numbers)
 	{
