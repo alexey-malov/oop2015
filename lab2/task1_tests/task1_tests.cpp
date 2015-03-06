@@ -18,7 +18,7 @@ BOOST_AUTO_TEST_CASE(EmptyVectorProducesEmptyVector)
 	BOOST_CHECK(emptyVector.empty());
 }
 
-BOOST_AUTO_TEST_CASE(VectorWithoutDosntChangeContent)
+BOOST_AUTO_TEST_CASE(VectorWithoutPositivesDoesntChangeContent)
 {
 	vector<double> numbers = { -4, 0, -3 };
 	auto copy(numbers);
