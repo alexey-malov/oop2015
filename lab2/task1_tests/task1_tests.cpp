@@ -32,3 +32,10 @@ BOOST_AUTO_TEST_CASE(VectorWithOnePositiveElement)
 	ProcessVector(numbers);
 	BOOST_CHECK(VectorsAreEqual(numbers, { 2, 6 }));
 }
+
+BOOST_AUTO_TEST_CASE(VectorWithSeveralPositiveElements)
+{
+	vector<double> numbers = { -1, 1, 2, 3};
+	ProcessVector(numbers);
+	BOOST_CHECK(VectorsAreEqual(numbers, { (-1+2), (1+2), (2+2), (3+2) }));
+}
