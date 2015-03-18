@@ -10,3 +10,8 @@ CTVSet::CTVSet()
 CTVSet::~CTVSet()
 {
 }
+
+bool CTVSet::IsTurnedOn()const
+{
+	return false;
+}
