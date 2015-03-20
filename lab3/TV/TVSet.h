@@ -13,8 +13,9 @@ public:
 	телевизор был включен*/
 	bool TurnOff();
 	int GetChannel() const;
+	bool SelectChannel(int channel);
 private:
 	bool m_isTurnedOn;
-
+	int m_channel;
 };
 

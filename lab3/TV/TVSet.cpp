@@ -4,6 +4,7 @@
 
 CTVSet::CTVSet()
 	:m_isTurnedOn(false)
+	,m_channel(1)
 {
 
 }
@@ -34,7 +35,17 @@ int CTVSet::GetChannel() const
 {
 	if (m_isTurnedOn)
 	{
-		return 1;
+		return m_channel;
 	}
 	return 0;
+}
+
+bool CTVSet::SelectChannel(int channel)
+{
+	if (channel > 0 && channel < 100)
+	{
+		m_channel = channel;
+		return true;
+	}
+	return false;
 }
