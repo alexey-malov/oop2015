@@ -29,3 +29,8 @@ bool CTVSet::TurnOff()
 	m_isTurnedOn = false;
 	return true;
 }
+
+int CTVSet::GetChannel()
+{
+	return 0;
+}

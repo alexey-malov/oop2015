@@ -9,7 +9,7 @@
 	- изначально выключен
 	- может быть включен
 	- может быть выключен
-
+	- в выключенном состоянии должен быть на 0 канале
 */
 BOOST_AUTO_TEST_SUITE(TVSet)
 
@@ -32,6 +32,16 @@ BOOST_AUTO_TEST_CASE(CanBeTurnedOff)
 	tv.TurnOn();
 	BOOST_CHECK(tv.TurnOff());
 	BOOST_CHECK(!tv.IsTurnedOn());
+}
+
+BOOST_AUTO_TEST_CASE(IsAtChannel0WhenTurnedOff)
+{
+	CTVSet tv;
+	BOOST_CHECK_EQUAL(tv.GetChannel(), 0);
+	tv.TurnOn();
+	tv.TurnOff();
+	BOOST_CHECK_EQUAL(tv.GetChannel(), 0);
+
 }
 
 BOOST_AUTO_TEST_SUITE_END()
