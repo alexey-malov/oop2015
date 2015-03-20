@@ -12,7 +12,7 @@ public:
 	возвращает true, если 
 	телевизор был включен*/
 	bool TurnOff();
-	int GetChannel();
+	int GetChannel() const;
 private:
 	bool m_isTurnedOn;
 

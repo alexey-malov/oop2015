@@ -10,7 +10,8 @@
 	- может быть включен
 	- может быть выключен
 	- в выключенном состоянии должен быть на 0 канале
-*/
+	- при первом включении телевизор включается на первом канале
+	*/
 BOOST_AUTO_TEST_SUITE(TVSet)
 
 BOOST_AUTO_TEST_CASE(TurnedOffByDefault)
@@ -41,7 +42,13 @@ BOOST_AUTO_TEST_CASE(IsAtChannel0WhenTurnedOff)
 	tv.TurnOn();
 	tv.TurnOff();
 	BOOST_CHECK_EQUAL(tv.GetChannel(), 0);
+}
 
+BOOST_AUTO_TEST_CASE(InitiallyIsTurnedOnAtChannel1)
+{
+	CTVSet tv;
+	tv.TurnOn();
+	BOOST_CHECK_EQUAL(tv.GetChannel(), 1);
 }
 
 BOOST_AUTO_TEST_SUITE_END()

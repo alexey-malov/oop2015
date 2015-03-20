@@ -30,7 +30,11 @@ bool CTVSet::TurnOff()
 	return true;
 }
 
-int CTVSet::GetChannel()
+int CTVSet::GetChannel() const
 {
+	if (m_isTurnedOn)
+	{
+		return 1;
+	}
 	return 0;
 }
