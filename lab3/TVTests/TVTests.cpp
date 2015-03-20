@@ -8,6 +8,7 @@
 Телевизор
 	- изначально выключен
 	- может быть включен
+	- может быть выключен
 
 */
 BOOST_AUTO_TEST_SUITE(TVSet)
@@ -23,6 +24,14 @@ BOOST_AUTO_TEST_CASE(CanBeTurnedOn)
 	CTVSet tv;
 	BOOST_CHECK(tv.TurnOn());
 	BOOST_CHECK(tv.IsTurnedOn());
+}
+
+BOOST_AUTO_TEST_CASE(CanBeTurnedOff)
+{
+	CTVSet tv;
+	tv.TurnOn();
+	BOOST_CHECK(tv.TurnOff());
+	BOOST_CHECK(!tv.IsTurnedOn());
 }
 
 BOOST_AUTO_TEST_SUITE_END()

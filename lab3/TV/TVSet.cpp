@@ -23,3 +23,9 @@ bool CTVSet::TurnOn()
 	m_isTurnedOn = true;
 	return m_isTurnedOn;
 }
+
+bool CTVSet::TurnOff()
+{
+	m_isTurnedOn = false;
+	return true;
+}

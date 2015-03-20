@@ -1,4 +1,6 @@
 #pragma once
+
+
 class CTVSet
 {
 public:
@@ -6,6 +8,10 @@ public:
 	~CTVSet();
 	bool IsTurnedOn() const;
 	bool TurnOn();
+	/*Выключает телевизор
+	возвращает true, если 
+	телевизор был включен*/
+	bool TurnOff();
 private:
 	bool m_isTurnedOn;
 };
