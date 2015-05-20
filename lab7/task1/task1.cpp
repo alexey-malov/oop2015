@@ -5,8 +5,8 @@
 #include <string>
 using namespace std;
 
-template<typename T>
-bool FindMax(std::vector<T> const& arr, T &maxValue)
+template <typename T, typename Comp = std::less<T>>
+bool FindMax(std::vector<T> const& arr, T &maxValue, Comp const& comp = std::less<T>())
 {
 	if (arr.empty())
 	{
@@ -16,7 +16,7 @@ bool FindMax(std::vector<T> const& arr, T &maxValue)
 	size_t max = 0;
 	for (size_t i = 1; i < arr.size(); ++i)
 	{
-		if (arr[i] > arr[max])
+		if (comp(arr[max], arr[i]))
 		{
 			max = i;
 		}
@@ -25,6 +25,13 @@ bool FindMax(std::vector<T> const& arr, T &maxValue)
 	return true;
 }
 
+struct Student
+{
+	string name;
+	int age;
+	int weight;
+	int height;
+};
 
 
 int _tmain(int /*argc*/, _TCHAR* /*argv*/[])
@@ -38,6 +45,23 @@ int _tmain(int /*argc*/, _TCHAR* /*argv*/[])
 	string maxString;
 	assert(FindMax(strings, maxString));
 	assert(maxString == "dog");
+
+
+	vector<Student> students = {
+		{"Ivan Petrov", 20, 100, 150}, 
+		{"Eugene Dolgushev", 20, 87, 188},
+		{"Vladimir Alitov", 20, 62, 175},
+	};
+	Student tallestStudent;
+	assert(FindMax(students, tallestStudent, [](Student const& a, Student const& b){
+		return a.height < b.height;
+	}));
+	assert(tallestStudent.name == "Eugene Dolgushev");
+	Student lightestStudent;
+	assert(FindMax(students, lightestStudent, [](Student const& a, Student const& b){
+		return a.weight > b.weight;
+	}));
+	assert(lightestStudent.name == "Vladimir Alitov");
 	return 0;
 }
 
