@@ -5,41 +5,27 @@
 #include <string>
 using namespace std;
 
-bool FindMax(std::vector<int> const& arr, int &maxValue)
+template<typename T>
+bool FindMax(std::vector<T> const& arr, T &maxValue)
 {
 	if (arr.empty())
 	{
 		return false;
 	}
 
-	maxValue = arr[0];
-	for (auto elem : arr)
+	size_t max = 0;
+	for (size_t i = 1; i < arr.size(); ++i)
 	{
-		if (maxValue < elem)
+		if (arr[i] > arr[max])
 		{
-			maxValue = elem;
+			max = i;
 		}
 	}
+	maxValue = arr[max];
 	return true;
 }
 
-bool FindMax(std::vector<string> const& arr, string &maxValue)
-{
-	if (arr.empty())
-	{
-		return false;
-	}
 
-	maxValue = arr[0];
-	for (auto elem : arr)
-	{
-		if (maxValue < elem)
-		{
-			maxValue = elem;
-		}
-	}
-	return true;
-}
 
 int _tmain(int /*argc*/, _TCHAR* /*argv*/[])
 {
