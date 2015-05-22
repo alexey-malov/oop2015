@@ -13,11 +13,12 @@ struct DefaultStack_
 {
 	CStack<Item> defaultStack;
 };
-
+// Стек по умолчанию:
 BOOST_FIXTURE_TEST_SUITE(DefaultStack, DefaultStack_)
-
-	BOOST_AUTO_TEST_CASE(TestCaseName)
+	// является пустым
+	BOOST_AUTO_TEST_CASE(IsEmpty)
 	{
+		BOOST_CHECK(defaultStack.IsEmpty());
 	}
 
 BOOST_AUTO_TEST_SUITE_END()

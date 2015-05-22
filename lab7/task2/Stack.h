@@ -12,5 +12,10 @@ public:
 	~CStack()
 	{
 	}
+
+	bool IsEmpty() const
+	{
+		return true;
+	}
 };
 
