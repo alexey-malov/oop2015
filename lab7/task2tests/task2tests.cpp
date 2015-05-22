@@ -21,4 +21,10 @@ BOOST_FIXTURE_TEST_SUITE(DefaultStack, DefaultStack_)
 		BOOST_CHECK(defaultStack.IsEmpty());
 	}
 
+	// после добавления элемента становится не пустым
+	BOOST_AUTO_TEST_CASE(BecomesNotEmptyAutoPushingAnElement)
+	{
+		defaultStack.Push(Item());
+		BOOST_CHECK(!defaultStack.IsEmpty());
+	}
 BOOST_AUTO_TEST_SUITE_END()
