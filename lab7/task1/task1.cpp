@@ -6,7 +6,7 @@
 using namespace std;
 
 template <typename T, typename Comp = std::less<T>>
-bool FindMax(std::vector<T> const& arr, T &maxValue, Comp const& comp = std::less<T>())
+bool FindMax(std::vector<T> const& arr, T &maxValue, Comp const& comp = Comp())
 {
 	if (arr.empty())
 	{
@@ -33,14 +33,33 @@ struct Student
 	int height;
 };
 
+struct MyIntLess
+{
+	bool const operator()(int const& a, int const& b) const
+	{
+		return a < b;
+	}
+};
 
 int _tmain(int /*argc*/, _TCHAR* /*argv*/[])
 {
-	std::vector<int> a = { 1, 4, -2, 0, 12, -6 };
-	int max;
-	assert(FindMax(a, max));
-	assert(max == 12);
-	
+	{
+		std::vector<int> a = { 1, 4, -2, 0, 12, -6 };
+		int max;
+
+		assert(FindMax(a, max));
+		assert(max == 12);
+
+		assert(FindMax(a, max, MyIntLess()));
+		assert(max == 12);
+
+		assert((FindMax<int, MyIntLess>)(a, max));
+		assert(max == 12);
+
+		assert((FindMax<int, MyIntLess>)(a, max, MyIntLess()));
+		assert(max == 12);
+	}
+
 	std::vector<string> strings = { "cat", "dog", "apple", "cow" };
 	string maxString;
 	assert(FindMax(strings, maxString));
